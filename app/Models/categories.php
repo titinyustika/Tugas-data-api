@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class categories extends Model
 
 {
+    use HasFactory;
     protected $table ='categories';
     protected $fillabel =['id','name','created_at','updated_at'];
    

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class orders extends Model
 
 {
+    use HasFactory;
     protected $table ='orders';
     protected $fillabel =['id','customer_id','product_id','status','created_at'];
    
