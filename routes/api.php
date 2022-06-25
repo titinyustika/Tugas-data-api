@@ -34,5 +34,38 @@ route::get('/products/{products}', [ProductsController:: class, 'show'])->name('
 route::put('/products/{products}', [ProductsController:: class, 'update'])->name('products.update');
 route::delete('/products/{products}', [ProductsController:: class, 'destroy'])->name('products.destroy');
 
+// authentication
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login',[\App\Http\Controllers\AuthController::class,'login']);
+    Route::post('logout', [\App\Http\Controllers\AuthController::class,'logout']);
+    Route::post('refresh', [\App\Http\Controllers\AuthController::class,'refresh']);
+    Route::post('me', [\App\Http\Controllers\AuthController::class,'me']);
+});
+route::get('password', function(){
+    return bcrypt('titin yustika');
+});
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+
+
+});
+
+
+
+
+
+
+
 
 

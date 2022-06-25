@@ -8,15 +8,16 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['only' => ['index']]);
+    }
+
     public function index()
     {
-        $products = Products::all();
-        return response()->json($products);
+        //$data = Products::all();
+
     }
 
     /**

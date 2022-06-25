@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use illuminate\support\facades\validator;
 
 class CustomersController extends Controller
+
 {
     public function index()
     {
